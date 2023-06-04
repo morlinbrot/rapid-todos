@@ -23,11 +23,14 @@ const todoSlice = createSlice({
       if (target) {
         target.done = !target.done;
       }
+    },
+    deleteTodo(state, action) {
+      return state.filter(todo => todo.id !== action.payload);
     }
   },
 })
 
-export const { addTodo, toggleTodo } = todoSlice.actions;
+export const { addTodo, toggleTodo, deleteTodo } = todoSlice.actions;
 
 interface ConfigState {
   showForm: boolean,
