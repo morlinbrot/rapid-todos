@@ -1,4 +1,9 @@
 {
+    "actions": {
+        "addTodo": "Neue Aufgabe hinzufügen",
+        "cancel": "Abbrechen",
+        "confirm": "Hinzufügen"
+    },
     "list": {
         "title": "Meine Aufgaben",
         "fallback": "Sie haben keine Aufgaben"

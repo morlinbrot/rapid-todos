@@ -20,16 +20,37 @@ const todoSlice = createSlice({
   initialState,
   reducers: {
     addTodo(state, action) {
-      state.list.push(action.payload)
+      state.list.unshift(action.payload);
     },
   },
 })
 
 export const { addTodo } = todoSlice.actions;
 
+interface ConfigState {
+  showForm: boolean,
+}
+
+const initialConfigState: ConfigState = {
+  showForm: false,
+}
+
+const configSlice = createSlice({
+  name: 'config',
+  initialState: initialConfigState,
+  reducers: {
+    toggleTodoForm(state) {
+      state.showForm = !state.showForm;
+    }
+  }
+})
+
+export const { toggleTodoForm } = configSlice.actions;
+
 export const store = configureStore({
   reducer: {
     todos: todoSlice.reducer,
+    config: configSlice.reducer,
   },
 });
 
