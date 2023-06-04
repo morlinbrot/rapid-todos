@@ -36,7 +36,6 @@ export function TodoForm() {
 
     return (
         <form onSubmit={addTodo}>
-            <label htmlFor="todoText">Text</label><br />
             <input id="todoText" type="text" value={text} onChange={handleChange}></input>
             <button disabled={!text.length} onClick={handleConfirm}>{t('actions.confirm')}</button>
             <button onClick={handleCancel}>{t('actions.cancel')}</button>

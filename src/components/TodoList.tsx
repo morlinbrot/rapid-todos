@@ -5,15 +5,14 @@ import { TodoForm } from "./TodoForm";
 import { toggleTodoForm } from "../store/store";
 
 export function TodoList() {
+    const dispatch = useAppDispatch();
     const { t } = useTranslation();
 
-    const todos = useAppSelector(state => state.todos.list);
+    const todos = useAppSelector(state => state.todos);
+
     const showForm = useAppSelector(state => state.config.showForm);
 
-    const dispatch = useAppDispatch();
-
     const toggle = () => {
-        // TODO: Reset current state
         dispatch(toggleTodoForm());
     }
 

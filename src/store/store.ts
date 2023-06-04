@@ -1,31 +1,33 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, configureStore, createSlice } from "@reduxjs/toolkit";
 import { Todo } from "../components/TodoEntry";
 
-interface TodoState {
-  list: Todo[],
-}
+interface TodoState extends Array<Todo> {};
 
-const initialState: TodoState = {
-  list: [
-    {
-      id: 1,
-      text: "Commit initial setup",
-      done: false,
-    }
-  ],
-};
+const initialState: TodoState = [
+  {
+    id: 1,
+    text: "Commit initial setup",
+    done: true,
+  }
+];
 
 const todoSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
     addTodo(state, action) {
-      state.list.unshift(action.payload);
+      state.unshift(action.payload);
     },
+    toggleTodo(state, action: PayloadAction<number>) {
+      let target = state.find(todo => todo.id === action.payload);
+      if (target) {
+        target.done = !target.done;
+      }
+    }
   },
 })
 
-export const { addTodo } = todoSlice.actions;
+export const { addTodo, toggleTodo } = todoSlice.actions;
 
 interface ConfigState {
   showForm: boolean,
